@@ -1,0 +1,1425 @@
+/* Общие стили */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #fffaf2; /* молочный фон */
+}
+
+main {
+  flex: 1;
+}
+
+/* NAVIGATION */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(6px);
+  padding: 15px 25px;
+  z-index: 10000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  color: #fff;
+}
+
+nav .logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+nav .links {
+  display: flex;
+  gap: 20px;
+}
+
+nav .links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+nav .links a:hover {
+  color: #c5aa6d;
+}
+
+nav .menu-toggle {
+  display: none;
+  cursor: pointer;
+  font-size: 1.8rem;
+  color: #fff;
+}
+
+@media (max-width:768px) {
+  nav .links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: rgba(0,0,0,0.95);
+    position: absolute;
+    top:60px;
+    left:0;
+    padding: 15px 0;
+    z-index:9999;
+  }
+
+  nav .links.show {
+    display: flex;
+    animation: menuSlide 0.3s ease forwards;
+  }
+
+  nav .menu-toggle {
+    display: block;
+  }
+
+  nav .links a {
+    padding: 12px 20px;
+    font-size: 16px;
+  }
+}
+
+@keyframes menuSlide {
+  from {
+    opacity:0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity:1;
+    transform: translateY(0);
+  }
+}
+
+/* SECTION & CONTAINER */
+section {
+  padding: 120px 20px 80px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 1s;
+}
+
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* VIDEO BACKGROUND */
+.page-video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.page-video-background video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.45);
+}
+
+.page-content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+}
+
+/* HERO SECTION */
+.hero-section {
+  position: relative;
+  width:100%;
+  height:100vh;
+  overflow:hidden;
+}
+
+.hero-video {
+  position: absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.hero-overlay {
+  position: absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background: rgba(0,0,0,0.45);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:20px;
+}
+
+.hero-title {
+  font-size:3rem;
+  color:#fff;
+  margin-bottom:20px;
+}
+
+.btn-primary {
+  background: rgba(197,154,109,0.45);
+  border: 2px solid #fff;
+  padding:14px 32px;
+  color:#fff;
+  border-radius:30px;
+  font-size:1.4rem;
+  text-decoration:none;
+  transition:0.3s;
+  backdrop-filter: blur(3px);
+}
+
+.btn-primary:hover {
+  background: rgba(197,154,109,0.65);
+}
+
+/* ABOUT SECTION */
+.about-section {
+  background: transparent !important;
+  width: 100%;
+  padding: 100px 20px 80px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Заголовок "О нашем салоне" */
+.about-section .section-title {
+  font-family: 'Playfair Display', serif; /* красивый шрифт для заголовка */
+  font-weight: 700;
+  font-size: 3rem;
+  color: #ffffff; /* белый цвет */
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.5); /* лёгкая тень для объёма */
+  margin-bottom: 20px;
+}
+
+.about-section .section-text {
+  font-size:1.2rem;
+  max-width:700px;
+  color:#fff !important;
+  line-height:1.8;
+  margin-bottom:40px;
+}
+
+.about-section img {
+  max-width:300px;
+  height:auto;
+  border-radius:15px;
+  border: 3px solid rgba(255,255,255,0.5);
+  margin:0 auto 50px auto;
+}
+
+/* FEATURES GRID */
+.features-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;  /* Уменьшили промежутки между карточками */
+  max-width: 800px;  /* Уменьшили максимальную ширину */
+  margin: 0 auto;
+  margin-top: 40px;  /* Уменьшили отступ сверху, чтобы отступить от блока с фотографиями */
+  margin-bottom: 60px;  /* Отступ снизу, чтобы не прилипало к футеру */
+}
+
+.features-grid .contact-card {
+  flex: 1 1 200px;  /* Уменьшили размер карточек */
+  max-width: 250px;  /* Уменьшили максимальную ширину карточек */
+  padding: 20px;  /* Уменьшили внутренние отступы */
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #fff;
+}
+
+.features-grid .contact-card:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.features-grid .contact-icon {
+  font-size: 24px;  /* Уменьшили размер иконок */
+  color: #c5aa6d;
+  margin-bottom: 15px;
+}
+
+.features-grid h3 {
+  font-size: 1.3rem;  /* Уменьшили размер заголовков */
+  margin-bottom: 10px;
+  color: #fff !important;
+}
+
+.features-grid p {
+  font-size: 0.95rem;  /* Уменьшили размер текста */
+  color: #fff !important;
+  line-height: 1.6;
+}
+
+/* Дополнительные изменения для улучшения расстояния между блоками */
+.important-info-section {
+  margin-top: 40px;  /* Уменьшили отступ сверху для подвигания блока с фотографиями вверх */
+  margin-bottom: 60px;  /* Увеличили отступ снизу для добавления пространства между блоками */
+}
+
+.services-section {
+  background: transparent !important;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 120px 20px 0; /* только верхний паддинг */
+  box-sizing: border-box;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+  color: #fff;
+  min-height: 100vh;
+}
+
+
+.services-section .container {
+  max-width: 1200px;
+  width: 100%;
+}
+
+/* Заголовок "Наши услуги" */
+.services-section .section-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 3rem;
+  color: #ffffff;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+  margin-bottom: 20px;
+}
+
+.services-section .section-text {
+  font-size: 1.2rem;
+  max-width: 700px;
+  line-height: 1.8;
+  margin: 0 auto 40px auto;
+  color: #fff !important;
+}
+
+/* SERVICE GRID (необязательный) */
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.service-card {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.25);
+  padding: 25px;
+  border-radius: 15px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+  transition: 0.3s;
+  text-align: center;
+}
+
+.service-card:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* TABS CONTAINER */
+.tabs {
+  margin-top: 40px;
+  text-align: center;
+  width: 100%;
+}
+
+/* TAB BUTTONS */
+.tab-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.tab-btn {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 18px 35px;
+  border-radius: 15px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 18px;
+  transition: 0.3s;
+  min-width: 180px;
+}
+
+.tab-btn:hover {
+  background: rgba(255, 255, 255, 0.35);
+  transform: translateY(-3px);
+}
+
+.tab-btn.active {
+  background: #c5aa6d;
+  border-color: #c5aa6d;
+  color: #fff;
+}
+
+/* TAB CONTENT */
+.tab-content {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: left;
+  width: 100%;
+}
+
+.tab-panel {
+  display: none;
+  background: transparent !important;
+  color: #fff;
+  padding: 0 !important;
+  border-radius: 0;
+  line-height: 1.7;
+  box-shadow: none;
+  font-size: 1.05rem;
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto 40px auto; /* небольшой отступ снизу */
+}
+
+
+
+.tab-panel.active {
+  display: block;
+}
+
+/* TAB HEADINGS */
+.tab-panel h3 {
+  text-align: center;
+  color: #ffd580;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.tab-panel h4 {
+  color: #ffeaa0;
+  font-size: 1.4rem;
+  margin: 15px 0 10px;
+}
+
+/* PARAGRAPHS */
+.tab-panel p {
+  margin-bottom: 15px;
+}
+
+/* LISTS */
+.tab-panel ul {
+  list-style: disc inside;
+  margin-left: 0;
+  margin-bottom: 15px;
+  padding-left: 20px;
+}
+
+.tab-panel li {
+  margin-bottom: 10px;
+}
+
+/* MESSENGERS */
+.messengers {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.messengers a {
+  display: flex;
+  align-items: center;
+  background: #25d366;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.messengers a.tg {
+  background: #0088cc;
+}
+
+.messengers i {
+  margin-right: 8px;
+}
+
+/* FOOTER */
+footer {
+  background: rgba(0,0,0,0.8);
+  color: #fff;
+  text-align: center;
+  padding: 25px 20px;
+}
+
+footer a {
+  color: #ffd580;
+  margin: 0 10px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+
+
+/* CERTIFICATES SECTION — ИСПРАВЛЕННАЯ ВЕРСИЯ (увеличен отступ от шапки) */
+.certificates-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 180px 20px 40px; /* ↑ Сильно увеличен верхний отступ (было 120px) */
+  background: transparent !important;
+  position: relative;
+  z-index: 10; /* чтобы контент был поверх видео */
+}
+
+.certificates-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px; /* отступ между элементами */
+}
+
+.certificates-section .section-title {
+  font-family: 'Playfair Display', serif; /* красивый шрифт */
+  font-weight: 700;
+  font-size: 3rem; /* крупный заголовок */
+  color: #ffffff; /* белый цвет только для заголовка */
+  letter-spacing: 1px;
+  margin-bottom: 30px; /* сохранён увеличенный отступ */
+  text-align: center;
+  line-height: 1.2;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* легкая тень для объема */
+}
+
+.certificates-section .section-subtitle {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 1.6rem; /* чуть меньше заголовка */
+  color: #6b5a4a; /* гармонирующий цвет */
+  margin-bottom: 30px; /* сохранён увеличенный отступ */
+  text-align: center;
+  line-height: 1.4;
+}
+
+.certificates-section .section-text {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 1.2rem;
+  color: #ffff; /* более темный оттенок для текста */
+  line-height: 1.8;
+  max-width: 750px; /* чтобы текст не растягивался на всю ширину */
+  margin: 0 auto 50px auto; /* сохранён увеличенный нижний отступ */
+  text-align: center;
+  word-wrap: break-word; /* перенос слов */
+  hyphens: auto; /* автоматические переносы */
+}
+
+/* Сетка сертификатов по горизонтали */
+.certificates-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.certificate-card {
+  flex: 1 1 250px;
+  max-width: 300px;
+  padding: 25px;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #fff;
+}
+
+.certificate-card:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.certificate-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.certificate-card p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* АДАПТАЦИЯ ДЛЯ МОБИЛЬНЫХ (экраны ≤ 768px) */
+@media (max-width: 768px) {
+  .certificates-section {
+    padding: 130px 15px 30px; /* уменьшен отступ для мобильных, но сохранён запас сверху */
+  }
+  
+  .certificates-section .section-title {
+    font-size: 2.5rem; /* немного уменьшен размер */
+    margin-bottom: 25px;
+  }
+  
+  .certificates-section .section-subtitle {
+    font-size: 1.4rem;
+    margin-bottom: 25px;
+  }
+  
+  .certificates-section .section-text {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin: 0 auto 40px auto;
+    padding: 0 15px;
+  }
+  
+  .certificates-grid {
+    gap: 20px;
+    padding: 0 10px;
+  }
+  
+  .certificate-card {
+    flex: 1 1 100%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+}
+
+/* ЭКСТРЕМАЛЬНАЯ АДАПТАЦИЯ (экраны ≤ 480px) */
+@media (max-width: 480px) {
+  .certificates-section {
+    padding: 110px 10px 20px; /* ещё меньше отступов для очень маленьких экранов */
+  }
+  
+  .certificates-section .section-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .certificates-section .section-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+  
+  .certificates-section .section-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0 auto 30px auto;
+    padding: 0 10px;
+  }
+  
+  .certificate-card {
+    padding: 20px;
+  }
+}
+
+
+/* CONTACTS SECTION - отступ сверху больше */
+.contacts-section {
+  width: 100%;
+  min-height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 120px 20px 20px; /* увеличен отступ сверху */
+  text-align: center;
+  position: relative;
+  z-index: 10;
+  color: #fff;
+}
+
+.contacts-section .container {
+  max-width: 900px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px; /* минимальное расстояние между блоками */
+}
+
+/* Заголовок и подзаголовок */
+.section-center-text {
+  margin-bottom: 10px; /* почти нет отступа */
+}
+
+/* Заголовок "Наши контакты" */
+.contacts-section .section-title {
+  font-family: 'Playfair Display', serif; /* красивый шрифт */
+  font-weight: 700;
+  font-size: 3rem;
+  color: #ffffff; /* белый цвет текста */
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.5); /* лёгкая тень для объёма */
+  margin-bottom: 20px;
+}
+
+.contacts-section .section-subtitle {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+/* Контактные карточки */
+.contact-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px; /* уменьшено */
+  width: 100%;
+  margin-bottom: 10px; /* меньше */
+}
+
+.contact-card {
+  flex: 1 1 250px;
+  max-width: 280px;
+  padding: 12px; /* уменьшено */
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  color: #fff;
+}
+
+.contact-icon {
+  font-size: 22px;
+  color: #c5aa6d;
+  margin-bottom: 5px; /* уменьшено */
+}
+
+/* Карта */
+.contact-map {
+  width: 100%;
+  max-width: 600px;
+  height: 250px;
+  border: 0;
+  border-radius: 15px;
+  margin: 10px 0; /* минимальные отступы */
+}
+
+/* Форма контактов */
+.contact-form-wrapper {
+  width: 100%;
+  max-width: 500px;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 15px;
+  border-radius: 15px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  margin-top: 10px; /* форма чуть выше */
+  margin-bottom: 20px; /* до футера */
+}
+
+.contact-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* минимальный gap между полями */
+}
+
+.contact-form input, .contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-bottom: 6px; /* минимально */
+  font-size: 14px;
+}
+
+.contact-form button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #c5aa6d;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.contact-form button:hover {
+  background: #b3925e;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* FOOTER */
+footer {
+  background:#111;
+  color:#fff;
+  padding:20px;
+  margin-top:auto;
+  font-size:14px;
+}
+
+.footer-inner {
+  max-width:1200px;
+  margin:auto;
+  text-align:center;
+}
+
+.footer-links {
+  margin-top:10px;
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.footer-links a {
+  color:#c5aa6d;
+  font-weight:600;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+.footer-links a:hover {
+  color:#fff;
+}
+
+/* MESSENGERS */
+.messengers {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 9999;
+}
+
+.messengers a {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.messengers a:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.messengers a.wa {
+  background: #25D366;
+}
+
+.messengers a.tg {
+  background: #0088cc;
+}
+
+.messengers i {
+  font-size: 24px; /* Размер иконок */
+  transition: transform 0.3s ease;
+  margin-right: 10px; /* Отступ между иконкой и текстом */
+}
+
+.messengers .messenger-text {
+  font-size: 14px;
+  display: inline-block;
+  transition: opacity 0.3s ease;
+}
+
+/* Мобильная версия */
+@media (max-width: 768px) {
+  .messengers a {
+    padding: 12px;
+    width: 50px;
+    height: 50px;
+  }
+
+  /* Скрыть текст на мобильных */
+  .messengers .messenger-text {
+    display: none;
+  }
+
+  .messengers i {
+    font-size: 28px; /* Увеличиваем размер иконок на мобильных */
+  }
+}
+
+/* ПК версия */
+@media (min-width: 769px) {
+  .messengers a {
+    width: auto; /* Ширина кнопки на ПК зависит от контента */
+    padding: 12px 20px; /* Добавляем немного отступов */
+  }
+
+  .messengers .messenger-text {
+    display: inline-block; /* Показываем текст на ПК */
+  }
+
+  .messengers i {
+    font-size: 24px;
+  }
+}
+
+/* --- GIFT CERTIFICATE BLOCK --- */
+.gift-card-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 20px;
+  padding: 30px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.25);
+  color: #fff;
+}
+
+.gift-card-image img {
+  width: 100%;
+  max-width: 380px;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+}
+
+.gift-card-info {
+  max-width: 500px;
+  text-align: left;
+}
+
+.gift-card-info h3 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+.gift-card-info p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+.gift-card-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 12px 28px;
+  background: rgba(197,154,109,0.55);
+  border: 2px solid #fff;
+  border-radius: 30px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+  backdrop-filter: blur(4px);
+}
+
+.gift-card-btn:hover {
+  background: rgba(197,154,109,0.75);
+  transform: translateY(-3px);
+}
+
+/* 📱 адаптив на мобильных */
+@media (max-width: 768px) {
+  .gift-card-wrapper {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .gift-card-info {
+    text-align: center;
+  }
+
+  .gift-card-info h3 {
+    font-size: 1.7rem;
+  }
+}
+
+#cookie-banner {
+  position: fixed;
+  bottom: 20px;
+  left: 20px; /* левый нижний угол */
+  background: rgba(0,0,0,0.85);
+  color: #fff;
+  padding: 15px 25px;
+  border-radius: 10px;
+  display: none; /* по умолчанию скрыт */
+  flex-direction: column;
+  gap: 10px;
+  z-index: 9999;
+  max-width: 500px;
+  font-size: 14px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+#cookie-banner p {
+  margin: 0;
+  line-height: 1.4;
+  font-size: 14px;
+}
+
+#cookie-banner a {
+  color: #c5aa6d;
+  text-decoration: underline;
+}
+
+#cookie-banner button {
+  background: #c5aa6d;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 15px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+#cookie-banner button:hover {
+  background: #b3925e;
+}
+
+/* Carousel Styles */
+.carousel-container {
+  position: relative;
+  width: 100%;
+  max-width: 20%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.carousel {
+  display: flex;
+  transition: transform 1s ease-in-out;
+}
+
+.carousel-item {
+  min-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+@keyframes slide {
+  0% { transform: translateX(0); }
+  16.67% { transform: translateX(-100%); }
+  33.33% { transform: translateX(-200%); }
+  50% { transform: translateX(-300%); }
+  66.67% { transform: translateX(-400%); }
+  83.33% { transform: translateX(-500%); }
+  100% { transform: translateX(0); }
+}
+
+.carousel {
+  animation: slide 18s infinite;
+}
+
+/* ABOUT SECTION */
+.about-section {
+  background: transparent !important;
+  width: 100%;
+  padding: 100px 20px 80px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Заголовок "О нашем салоне" */
+.about-section .section-title {
+  font-family: 'Playfair Display', serif; /* красивый шрифт для заголовка */
+  font-weight: 700;
+  font-size: 3rem;
+  color: #ffffff; /* белый цвет */
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* лёгкая тень для объёма */
+  margin-bottom: 20px;
+}
+
+.about-section .section-text {
+  font-size: 1.2rem;
+  max-width: 700px;
+  color: #fff !important;
+  line-height: 1.8;
+  margin-bottom: 40px;
+}
+
+/* Стили для изображения */
+.about-images {
+  display: flex;
+  justify-content: space-between;  /* Равномерное распределение изображений */
+  gap: 10px;  /* Интервал между изображениями */
+  flex-wrap: wrap;  /* Перенос изображений на новую строку при необходимости */
+}
+
+.about-image {
+  width: 32%;  /* Каждое изображение будет занимать 32% ширины контейнера */
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Легкая тень */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Эффект при наведении */
+.about-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Новый блок с изображениями */ /* с фотками что важно знать о посещении массажного салона */
+.important-info-section {
+  padding: 10px 20px 50px;  /* Уменьшили верхний отступ */
+  text-align: center;
+  background: rgba(255, 255, 255, 0.1); /* Сделали фон более прозрачным */
+  backdrop-filter: blur(10px); /* Эффект размытия фона */
+  border-top: 3px solid #c5aa6d; /* Легкая линия сверху */
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Тень для контраста */
+  width: 95%; /* Увеличили ширину блока */
+  max-width: 1700px; /* Ограничиваем максимальную ширину */
+  margin: 0 auto; /* Центрируем блок */
+  margin-top: -40px; /* Подняли блок выше с большим отрицательным отступом */
+  border: 3px solid rgba(255, 255, 255, 0.35); /* Рамка теперь толще (3px) с большей прозрачностью */
+}
+
+
+
+/* Заголовок блока */
+.important-info-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 2.6rem;  /* Увеличили размер шрифта заголовка */
+  color: #fff;
+  margin-bottom: 40px;  /* Увеличили отступ */
+  text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Сетка изображений */
+.important-info-images {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); /* Сделали фотографии больше */
+  gap: 25px;  /* Уменьшили промежутки между изображениями */
+  margin-top: 10px;  /* Уменьшили отступ сверху */
+}
+
+.important-info-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Легкая тень */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 2px solid rgba(255, 255, 255, 0.5); /* Добавили белую рамку */
+}
+
+/* Эффект при наведении */
+.important-info-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Доработка футера и секций для правильного позиционирования --- */
+
+/* Секция услуг растягивается по контенту, футер прилипает к низу при коротком контенте */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1 0 auto; /* основное содержимое растягивается */
+}
+
+.services-section {
+  flex: 1 0 auto; /* растягивается по контенту, чтобы футер не висел */
+  min-height: auto; /* высота зависит от контента */
+}
+
+/* Футер */
+footer {
+  flex-shrink: 0; /* футер всегда снизу, не сжимается */
+}
+
+/* Таб-панели: чтобы футер не перекрывался на длинной вкладке */
+.tab-panel {
+  margin-bottom: 40px; /* небольшой отступ до футера */
+}
+
+.massage-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* две карточки в ряд */
+  gap: 40px;
+  margin-top: 40px;
+  width: 200%;
+  max-width: 1500px;  /* центрируем и ограничиваем */
+  margin-left: -300px;
+  margin-right: auto;
+}
+
+.massage-card {
+  position: relative;
+  border-radius: 25px;
+  overflow: hidden;
+  height: 700px; /* увеличиваем высоту карточек */
+  cursor: pointer;
+}
+
+.massage-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Блок с названием и ценой внизу */
+.massage-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.55);
+  padding: 10px 20px;
+  color: #fff;
+  text-align: left;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  box-sizing: border-box;
+  backdrop-filter: blur(5px);
+}
+
+.massage-name {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: #fff;
+}
+
+.massage-price {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ffd580;
+}
+
+/* Контейнер времени и лейбла */
+.massage-duration {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px; /* расстояние между лейблом и селектом */
+  background: rgba(0,0,0,0.55);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #ffd580;
+  backdrop-filter: blur(5px);
+}
+
+/* Лейбл "Выбери время" */
+.duration-label {
+  white-space: nowrap;
+  color: #ffd580;
+}
+
+/* Селект */
+.duration-select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 6px 28px 6px 10px; /* справа оставлено место для стрелки */
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #ffff;
+  background: rgba(0,0,0,0.1);
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: inset 0 0 1px rgba(0,0,0,0.3);
+  position: relative;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+/* Hover и фокус */
+.duration-select:hover,
+.duration-select:focus {
+  background: rgba(0,0,0,0.6);
+  box-shadow: inset 0 0 8px rgba(0,0,0,0.5);
+  outline: none;
+}
+
+/* Стрелка селекта */
+.duration-select::after {
+  content: "▼";
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #ffd580;
+  font-size: 1rem;
+}
+
+
+/* Заголовок на карточке (если нужен) */
+.massage-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.massage-top-left {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: rgba(0,0,0,0.55);
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.2rem;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+}
+
+@media (max-width: 768px) {
+
+  /* Родитель карточек — принудительное центрирование */
+  .services-section .massage-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+  }
+
+  /* Карточка — строго по центру */
+  .services-section .massage-card {
+    width: 100% !important;        /* уменьшил ещё сильнее */
+    max-width: 400px !important;
+    margin: 0 auto !important;    /* принудительное центрирование */
+  }
+
+  /* Карточки меньше и по центру */
+  .services-section .massage-card {
+    flex: 0 0 95%; /* почти вся ширина экрана */
+    max-width: 95%;
+    margin-bottom: 10px;
+  }
+
+  /* Изображения в карточках */
+  .services-section .massage-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  /* Выпадающий список времени */
+  .services-section .massage-duration select {
+    width: 100%;
+    padding: 1px;
+    font-size: 13px;
+  }
+}
+
+/* Скрываем стандартную кнопку Play на мобильных (iOS/Android) */
+.page-video-background video::-webkit-media-controls {
+  display: none !important;
+}
+
+.page-video-background video::-webkit-media-controls-start-playback-button {
+  display: none !important;
+}
+
+/* Видео как настоящий фон */
+.page-video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.page-video-background video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none; /* делает видео некликабельным → кнопка Play не появляется */
+}
